@@ -7,17 +7,26 @@
 </head>
 <body>
     <script type="module">
-        import init, {add} from './pkg/rust_wasm.js'
+        import init, {add, multiply} from './pkg/rust_wasm.js'
 
         await init()
 
-        //console.log(add(5492192, 59))
+        let first = document.getElementById('first')
+        let second = document.getElementById('second')
+        let button = document.getElementById('btn')
+        let result = document.getElementById('result')
 
-        document.addEventListener("keydown", (e) => {
-            let lala = add(500, 1)
-            console.log(lala)
+        button.addEventListener("click", (e) => {
+            if(parseInt(first.value) > 0 && parseInt(second.value) > 0) {
+                result.innerHTML = add(parseInt(first.value) + parseInt(second.value))
+            }
         })
     </script>
+
+    <input type="text" id="first"> +
+    <input type="text" id="second">
+    <button type="button" id="btn">Add</button>
+    <p id="result">Result: </p>
     
 </body>
 </html>
